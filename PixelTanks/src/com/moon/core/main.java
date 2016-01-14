@@ -8,6 +8,10 @@ public class main {
 
 		JFrame f = new JFrame("PixelTanks");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setContentPane(new Game());
+		f.setVisible(true);
+		f.setResizable(false);
+		f.pack();
 	}
 
 }
