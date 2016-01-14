@@ -1,10 +1,13 @@
 package com.moon.core;
 
+import javax.swing.JFrame;
+
 public class main {
 
 	public static void main(String[] args) {
-		// TODO Автоматически созданная заглушка метода
 
+		JFrame f = new JFrame("PixelTanks");
+		
 	}
 
 }
