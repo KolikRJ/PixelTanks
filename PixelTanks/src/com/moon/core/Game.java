@@ -6,16 +6,16 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import com.moon.objects.ArrayObjects;
+import com.moon.maps.TanksMap;
 
 public class Game extends JPanel implements Runnable {
 
-	public static final int WIDTH = 3200 * 2;
+	public static final int WIDTH = 320 * 2;
 	public static final int HEIGHT = 240 * 2;
 
-	private ArrayObjects objects = new ArrayObjects();
-
 	private Thread thread;
+
+	private TanksMap map;
 
 	{
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -31,17 +31,23 @@ public class Game extends JPanel implements Runnable {
 		}
 	}
 
+	private void init() {
+		map = new TanksMap();
+	}
+
 	public void paint(Graphics g1) {
 		Graphics2D g = (Graphics2D) g1;
-		objects.draw(g);
+		map.draw(g);
 	}
 
 	private void update() {
-		objects.update();
+		map.update();
 	}
 
 	@Override
 	public void run() {
+
+		init();
 
 		while (true)
 			try {
