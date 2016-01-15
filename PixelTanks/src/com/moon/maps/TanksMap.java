@@ -1,17 +1,20 @@
 package com.moon.maps;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 
+/**
+ * 
+ * @author Kepler
+ */
 public class TanksMap {
 
-	private int sizeTile = 22;
+	private int sizeTile = 16;
 
-	private int[][] maps =
+	private byte[][] maps =
 		{
 			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-			{ 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1 },
+			{ 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1 },
 			{ 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1 },
 			{ 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1 },
 			{ 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1 },
@@ -34,19 +37,23 @@ public class TanksMap {
 
 	}
 
+	/**
+	 * 
+	 * @param g
+	 *            Метод для отрисовки карты
+	 */
 	public void draw(Graphics2D g) {
 		for (int i = 0; i < maps.length; i++)
 			for (int j = 0; j < maps.length; j++) {
-				int arg0 = maps[i][j];
+				byte arg0 = maps[i][j];
 				switch (arg0) {
 				case 0:
-					g.setColor(Color.white);
+					g.drawImage(TanksImage.PLAINS, sizeTile * j, sizeTile * i, sizeTile, sizeTile, null);
 					break;
 				case 1:
-					g.setColor(Color.black);
+					g.drawImage(TanksImage.BRICK, sizeTile * j, sizeTile * i, sizeTile, sizeTile, null);
 					break;
 				}
-				g.fillRect(sizeTile * j, sizeTile * i, sizeTile, sizeTile);
 			}
 
 	}
